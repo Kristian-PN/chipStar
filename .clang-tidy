@@ -2,7 +2,7 @@
 Checks:          '-*,readability-*,modernize-*,clang-analyzer-*'
 WarningsAsErrors: ''
 HeaderFilterRegex: './src/.*'
-ExcludeHeaderFilterRegex: 'spirv-tools/libspirv.hpp'
+ExcludeHeaderFilterRegex: '.*CHIPBackendOpenCL.*'
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
 User:            pvelesko
