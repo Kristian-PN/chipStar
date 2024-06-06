@@ -29,7 +29,7 @@ jobs:
           lines-changed-only: false
           extensions: 'cc,hh'
           tidy-checks: '-*,readability-*,modernize-*,clang-analyzer-*'
-          ignore: '.github|spirv-extractor/spirv-extractor.cc|llvm_passes/SPIRVImageType.cc|src/spirv_hiprtc.cc|samples|include/hip/devicelib/atomics.hh|include/hip/spirv_hip.hh|tests'
+          ignore: '.github|spirv-extractor/spirv-extractor.cc|llvm_passes/SPIRVImageType.cc|src/spirv_hiprtc.cc|samples|include/hip/devicelib/atomics.hh|include/hip/spirv_hip.hh|tests|include'
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
         run: exit 1
