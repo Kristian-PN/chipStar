@@ -25,11 +25,10 @@ jobs:
         with:
           style: file
           version: 11
-          files-changed-only: true
-          lines-changed-only: true
+          files-changed-only: false
+          lines-changed-only: false
           extensions: 'cc,hh'
           tidy-checks: '-*,readability-*,modernize-*,clang-analyzer-*'
-          extra-args: '-I$GITHUB_WORKSPACE/spirv-extractor/SPIRV-Tools/include/ -I$GITHUB_WORKSPACE/HIP/include/  -I$GITHUB_WORKSPACE/include/ -I$GITHUB_WORKSPACE/include/dummy  -std=c++17'
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
         run: exit 1
