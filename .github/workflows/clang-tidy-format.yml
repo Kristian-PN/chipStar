@@ -259,22 +259,6 @@ jobs:
       - name: Build
         run: ${{ env.OPENCL_ENV }} cmake --build . --parallel 4
         working-directory: build
-      # - name: Build Tests
-      #   run: ${{ env.OPENCL_ENV }} CHIP_DEVICE_TYPE=cpu cmake --build . --parallel 4 --target build_tests
-      #   working-directory: build
-      # - name: Test OpenCL
-      #   run: ${{ env.OPENCL_ENV }} CHIP_DEVICE_TYPE=cpu ctest --timeout 180 --output-on-failure -E ${{ env.EXCLUDE }}
-      #   working-directory: build
-      # - uses: actions/upload-artifact@v3
-      #   if: failure()
-      #   with:
-      #     name: build-and-check-${{ matrix.backend }}-llvm-${{ matrix.llvm-version }}
-      #     path: build/Testing/Temporary/LastTest.log
-
-  cpp-linter:
-    needs: [pre_job, llvm, spirv-tools, pocl, chipstar]
-    runs-on: ubuntu-latest
-    steps:
       - name: Install clang
         run: sudo apt install clang-15 --install-suggests
       - name: C/C++ Linter
@@ -289,9 +273,44 @@ jobs:
           lines-changed-only: false
           extensions: 'cc,hh'
           tidy-checks: '-*,readability-*,modernize-*,clang-analyzer-*'
-      - name: Failed nuber
+      - name: Failed number
         run: echo ${{ steps.linter.outputs.checks-failed }}
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
         run: exit 1
+      # - name: Build Tests
+      #   run: ${{ env.OPENCL_ENV }} CHIP_DEVICE_TYPE=cpu cmake --build . --parallel 4 --target build_tests
+      #   working-directory: build
+      # - name: Test OpenCL
+      #   run: ${{ env.OPENCL_ENV }} CHIP_DEVICE_TYPE=cpu ctest --timeout 180 --output-on-failure -E ${{ env.EXCLUDE }}
+      #   working-directory: build
+      # - uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: build-and-check-${{ matrix.backend }}-llvm-${{ matrix.llvm-version }}
+      #     path: build/Testing/Temporary/LastTest.log
+
+  # cpp-linter:
+  #   needs: [pre_job, llvm, spirv-tools, pocl, chipstar]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Install clang
+  #       run: sudo apt install clang-15 --install-suggests
+  #     - name: C/C++ Linter
+  #       uses: cpp-linter/cpp-linter-action@v2.9.0
+  #       id: linter
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         style: file
+  #         version: 15
+  #         files-changed-only: false
+  #         lines-changed-only: false
+  #         extensions: 'cc,hh'
+  #         tidy-checks: '-*,readability-*,modernize-*,clang-analyzer-*'
+  #     - name: Failed nuber
+  #       run: echo ${{ steps.linter.outputs.checks-failed }}
+  #     - name: Fail fast?!
+  #       if: steps.linter.outputs.checks-failed > 0
+  #       run: exit 1
 
