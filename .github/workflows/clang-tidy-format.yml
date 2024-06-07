@@ -23,8 +23,10 @@ jobs:
         run: sudo apt install clang-11 --install-suggests
       - name: Install cmake
         run: sudo apt install cmake
-      - name: Build Chipstar
+      - name: List environment
         run: echo $USER; ls -la /; sudo ls -la /usr/bin
+      - name: Build Chipstar
+        run: mkdir build && cd build && sudo cmake ../
       - name: C/C++ Linter
         uses: cpp-linter/cpp-linter-action@v2.9.0
         id: linter
