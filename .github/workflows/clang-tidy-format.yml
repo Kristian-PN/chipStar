@@ -288,7 +288,7 @@ jobs:
           lines-changed-only: false
           extensions: 'cc,hh'
           tidy-checks: '-*,readability-*,modernize-*,clang-analyzer-*'
-      - name: Failed nuber:
+      - name: Failed nuber
         run: echo ${{ steps.linter.outputs.checks-failed }}
       - name: Fail fast?!
         if: steps.linter.outputs.checks-failed > 0
