@@ -14,9 +14,9 @@ jobs:
   cpp-linter:
     runs-on: ubuntu-latest
     steps:
-      # - uses: actions/checkout@v2
-      #   with:
-      #     submodules: recursive
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Install llvm
         run: sudo apt install llvm-11-dev
       - name: Install clang
