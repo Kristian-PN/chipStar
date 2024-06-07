@@ -272,6 +272,7 @@ jobs:
       #     path: build/Testing/Temporary/LastTest.log
 
   cpp-linter:
+    needs: [pre_job, llvm, spirv-tools, pocl, chipstar]
     runs-on: ubuntu-latest
     steps:
       - name: Install clang
