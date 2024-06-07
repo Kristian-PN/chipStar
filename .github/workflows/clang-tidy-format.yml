@@ -18,7 +18,7 @@ jobs:
         with:
           submodules: recursive
       - name: Install llvm
-        run: sudo apt install llvm-11
+        run: sudo apt install llvm-11-dev
       - name: Install clang
         run: sudo apt install clang-11 --install-suggests
       - name: Install cmake
