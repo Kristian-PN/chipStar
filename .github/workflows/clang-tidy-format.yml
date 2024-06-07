@@ -24,7 +24,7 @@ jobs:
       - name: Install cmake
         run: sudo apt install cmake
       - name: Build Chipstar
-        run: echo $USER; ls -la /
+        run: echo $USER; ls -la /; sudo ls -la /usr/bin
       - name: C/C++ Linter
         uses: cpp-linter/cpp-linter-action@v2.9.0
         id: linter
