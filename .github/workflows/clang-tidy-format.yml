@@ -269,6 +269,7 @@ jobs:
         with:
           style: file
           version: 15
+          database: './build/compile_commands.json'
           files-changed-only: false
           lines-changed-only: false
           extensions: 'cc,hh'
