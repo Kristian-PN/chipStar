@@ -92,12 +92,14 @@ jobs:
           key: ${{ steps.get-shas.outputs.llvm-cache-key }}
       - run: sudo apt update; sudo apt install -y gcc cmake
         if: steps.llvm.outputs.cache-hit != 'true'
+      - run: echo "llvm-${{ matrix.llvm-version }} ${{ steps.get-shas.outputs.llvm-sha }}"
       - uses: actions/checkout@v3
         with:
           repository: CHIP-SPV/llvm-project
           ref: ${{ steps.get-shas.outputs.llvm-sha }}
           path: llvm-${{ matrix.llvm-version }}
         if: steps.llvm.outputs.cache-hit != 'true'
+      - run: echo "llvm-${{ matrix.llvm-version }}-translator ${{ steps.get-shas.outputs.spirv-llvm-sha }}"
       - uses: actions/checkout@v3
         with:
           repository: KhronosGroup/SPIRV-LLVM-Translator
@@ -169,6 +171,7 @@ jobs:
         if: steps.pocl.outputs.cache-hit != 'true'
       - run: sudo apt install -y python3-dev libpython3-dev build-essential cmake git pkg-config make ninja-build ocl-icd-libopencl1 ocl-icd-dev ocl-icd-opencl-dev libhwloc-dev zlib1g zlib1g-dev clinfo dialog apt-utils libxml2-dev
         if: steps.pocl.outputs.cache-hit != 'true'
+      - run: echo "pocl ${{ steps.get-shas.outputs.pocl-sha }}"
       - uses: actions/checkout@v3
         with:
           repository: pocl/pocl
