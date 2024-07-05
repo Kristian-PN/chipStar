@@ -100,6 +100,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
+          submodules: 'recursive'
       - name: Hellow world
         run: mkdir build && cd build && cmake -DLLVM_CONFIG_BIN=/opt/llvm/17.0/bin/llvm-config -DCHIP_MALI_GPU_WORKAROUNDS=ON ../
         shell: bash
