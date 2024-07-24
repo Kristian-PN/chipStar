@@ -101,6 +101,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
           submodules: 'recursive'
-      - name: Hellow world
-        run: mkdir build && cd build && cmake -DLLVM_CONFIG_BIN=/opt/llvm/17.0/bin/llvm-config -DCHIP_MALI_GPU_WORKAROUNDS=ON ../
+      - name: Run unit test checking script
+        run: ./scripts/unit_tests.sh release llvm-18
         shell: bash

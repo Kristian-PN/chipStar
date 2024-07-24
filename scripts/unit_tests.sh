@@ -183,7 +183,7 @@ fi
 
 if [ "$host" != "salami" ]; then
   module unload opencl/dgpu
-else
+fi
 
 
 # module load HIP/hipBLAS/main/release # for libCEED NOTE: Must be after build step otherwise it will cause link issues.
