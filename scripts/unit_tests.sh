@@ -36,7 +36,7 @@ fi
 build_type=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 
 if [ "$host" = "salami" ]; then
-  if [ "$2" == "llvm-15" ]; then
+  if [ "$2" == "llvm-17" ]; then
     LLVM=llvm-17
     CLANG=llvm/17.0
   else
