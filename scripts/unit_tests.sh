@@ -130,6 +130,7 @@ export CHIP_L0_EVENT_TIMEOUT=$(($timeout - 10))
 
 # Use OpenCL for building/test discovery to prevent Level Zero from being used in multi-thread/multi-process environment
 if [ "$host" = "salami" ]; then
+  pwd
   # module use  /home/kristian/apps/modulefiles
   # module load $CLANG
 else
