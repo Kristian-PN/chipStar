@@ -37,8 +37,8 @@ build_type=$(echo "$1" | tr '[:lower:]' '[:upper:]')
 
 if [ "$host" = "salami" ]; then
   if [ "$2" == "llvm-15" ]; then
-    LLVM=llvm-15
-    CLANG=llvm/15.0-exts-only
+    LLVM=llvm-17
+    CLANG=llvm/17.0
   else
     echo "$2"
     echo "Invalid 2nd argument. Use  'llvm-15'."
@@ -130,8 +130,8 @@ export CHIP_L0_EVENT_TIMEOUT=$(($timeout - 10))
 
 # Use OpenCL for building/test discovery to prevent Level Zero from being used in multi-thread/multi-process environment
 if [ "$host" = "salami" ]; then
-  module use  /home/kristian/apps/modulefiles
-  module load $CLANG
+  # module use  /home/kristian/apps/modulefiles
+  # module load $CLANG
 else
   module use ~/modulefiles
   module load oneapi/2024.1.0 $CLANG opencl/dgpu 
@@ -155,7 +155,7 @@ if [ $skip_build ]; then
   cd build
 else
   if [ "$host" = "salami" ]; then
-    CHIP_OPTIONS="-DCHIP_MALI_GPU_WORKAROUNDS=ON -DCHIP_SKIP_TESTS_WITH_DOUBLES=ON"
+    CHIP_OPTIONS="-DLLVM_CONFIG_BIN=/opt/llvm/17.0/bin/llvm-config -DCHIP_MALI_GPU_WORKAROUNDS=ON -DCHIP_SKIP_TESTS_WITH_DOUBLES=ON"
     build_threads=1
   else
     CHIP_OPTIONS="-DCHIP_BUILD_HIPBLAS=ON"
