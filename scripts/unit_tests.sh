@@ -3,7 +3,7 @@
 set -e
 
 host=`hostname`
-echo "Running on ${hostname}"
+echo "Running on ${host}"
 # If not on Salami read the file /opt/actions-runner/num-threads.txt and set the number of threads to the value in the file
 # if the file does not exist, set the number of threads to 24
 if [ "$host" = "salami" ]; then
