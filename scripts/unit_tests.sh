@@ -155,7 +155,7 @@ if [ $skip_build ]; then
   cd build
 else
   if [ "$host" = "salami" ]; then
-    CHIP_OPTIONS="-DLLVM_CONFIG_BIN=/opt/llvm/17.0/bin/llvm-config -DCHIP_MALI_GPU_WORKAROUNDS=ON -DCHIP_SKIP_TESTS_WITH_DOUBLES=ON"
+    CHIP_OPTIONS="-DCHIP_MALI_GPU_WORKAROUNDS=ON -DCHIP_SKIP_TESTS_WITH_DOUBLES=ON"
     build_threads=1
   else
     CHIP_OPTIONS="-DCHIP_BUILD_HIPBLAS=ON"
