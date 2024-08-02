@@ -39,9 +39,12 @@ if [ "$host" = "salami" ]; then
   if [ "$2" == "llvm-15" ]; then
     LLVM=llvm-15
     CLANG=llvm/15.0-exts-only
+  elif [ "$2" == "llvm-18" ]; then
+    LLVM=llvm-18
+    CLANG=llvm/18.0-exts-only
   else
     echo "$2"
-    echo "Invalid 2nd argument. Use  'llvm-15'."
+    echo "Invalid 2nd argument. Use either 'llvm-15' or 'llvm-18'."
     exit 1
   fi
 else

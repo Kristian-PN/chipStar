@@ -93,7 +93,7 @@ jobs:
   #     - name: Run unit test checking script
   #       run: ./scripts/unit_tests.sh release llvm-18
   #       shell: bash
-  unit-tests-llvm-15-debug-salami:
+  unit-tests-llvm-18-debug-salami:
     runs-on: ['kkristian-salami', 'self-hosted', 'Linux', 'ARM64']
     steps:
       - uses: actions/checkout@v2
@@ -102,5 +102,5 @@ jobs:
           fetch-depth: 0
           submodules: 'recursive'
       - name: Run unit test checking script
-        run:  ./scripts/unit_tests.sh release llvm-15
+        run:  ./scripts/unit_tests.sh release llvm-18
         shell: bash
